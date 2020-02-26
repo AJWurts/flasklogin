@@ -1,3 +1,4 @@
+from passlib.hash import sha256_crypt
 
 
 class User:
@@ -9,14 +10,24 @@ class User:
         self.name = name
         self.lastname = lastname
         self.password = password
+    
 
-        self.is_authenticated = True
-        self.is_active = True
-        self.is_anonymous = False
+
+    @property
+    def is_active(self):
+        return True
+
+    @property
+    def is_authenticated(self):
+        return True
+
+    @property
+    def is_anonymous(self):
+        return False
 
 
     def check_password(self, password):
-        return self.password == password
+        return sha256_crypt.verify(password, self.password)
 
     def get_id(self):
         return self.name
@@ -24,4 +35,3 @@ class User:
 
     
 
-users = {'ajwurts': User('ajwurts', password='february')}

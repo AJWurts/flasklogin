@@ -11,7 +11,7 @@ content-type: application/json
 
 {
     "username": "ajwurts",
-    "password": "password"
+    "password": "february"
 }
 
 GET http://localhost:5000/car HTTP/1.1

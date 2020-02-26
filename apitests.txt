@@ -1,0 +1,19 @@
+POST http://localhost:5000/user HTTP/1.1
+content-type: application/json
+
+{
+    "username": "ajwurts",
+    "password": "february"
+}
+
+POST http://localhost:5000/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "ajwurts",
+    "password": "password"
+}
+
+GET http://localhost:5000/car HTTP/1.1
+
+

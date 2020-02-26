@@ -35,3 +35,7 @@ class User:
 
     
 
+def getUser(user_id):
+    query = """SELECT * FROM Users U WHERE U.uid = {0}""".format(user_id)
+    
+def 

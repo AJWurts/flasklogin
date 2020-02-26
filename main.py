@@ -1,7 +1,7 @@
 from flask_login import LoginManager, current_user, login_required, login_user
 from passlib.hash import sha256_crypt
 from flask import Flask, request
-from User import User
+from User import User, getUser
 
 app = Flask(__name__)
 app.secret_key = '123124124oihuencjskdbvliuageowl*(@&#HkajO*&BICk&*idwbkacwad'
@@ -73,13 +73,10 @@ def get_user_car():
     print(current_user)
     return cars[current_user.name]
 
-
-
-
-# password2 = sha256_crypt.encrypt("password")
-
-# print(password)
-# print(password2)
-
-# print(sha256_crypt.verify("password", password))
-		
+@app.route('/car', methods=['PUT'])
+@login_required
+def add_user_car():
+    json = request.get_json()
+    car = json['car']
+    cars[current_user.name] = car
+    return 'true'
